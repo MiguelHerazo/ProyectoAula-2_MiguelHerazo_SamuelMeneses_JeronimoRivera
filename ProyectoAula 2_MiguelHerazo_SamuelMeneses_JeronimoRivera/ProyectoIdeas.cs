@@ -30,6 +30,7 @@ namespace ProyectoEmprendimientos
         public List<IntegranteEquipo> IntegrantesEquipo { get; set; }
         public List<string> Herramientas4RI { get; set; } 
         public decimal Rentabilidad { get; set; }
+
     }
 
 
@@ -62,7 +63,7 @@ namespace ProyectoEmprendimientos
                 Console.WriteLine("13.Mostrar idea con mas herramientas de la 4RI utilizadas");
                 Console.WriteLine("14.Mostrar numero de ideas que tienen inteligencia artificial");
                 Console.WriteLine("15.Salir");
-                Console.Write("Por favor, seleccione una opción (1-10):     ");
+                Console.Write("Por favor, seleccione una opción (1-15): ");
 
                 if (int.TryParse(Console.ReadLine(), out int opcion))
                 {
@@ -182,11 +183,16 @@ namespace ProyectoEmprendimientos
 
             string[] herramientas4RI = herramientas4RIInput.Split(',');
 
-            
+
             foreach (string herramienta4RI in herramientas4RI)
             {
+                if (nuevaIdea.Herramientas4RI == null)
+                {
+                    nuevaIdea.Herramientas4RI = new List<string>();
+                }
                 nuevaIdea.Herramientas4RI.Add(herramienta4RI.Trim()); // Agregar cada herramienta a la lista
             }
+
 
             ideasDeNegocio.Add(new IdeaDeNegocio
             {
